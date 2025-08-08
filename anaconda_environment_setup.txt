@@ -1,0 +1,59 @@
+REM ==============================================
+REM Anaconda Setup Commands for Single File App
+REM ==============================================
+
+REM Step 1: Create new test environment
+conda create -n streamlit-single python=3.10 -y
+
+REM Step 2: Activate the environment
+conda activate streamlit-single
+
+REM Step 3: Install core packages via conda (faster)
+conda install -c conda-forge requests pillow -y
+
+REM Step 4: Install Streamlit and ReportLab via pip
+pip install streamlit reportlab
+
+REM Step 5: Verify installation
+python -c "import streamlit, requests, reportlab; print('All packages installed successfully!')"
+
+REM Step 6: Create project directory
+mkdir streamlit-single-app
+cd streamlit-single-app
+
+REM Step 7: Create the files
+REM (You'll copy the content manually)
+REM - streamlit_app.py (from the artifact above)
+REM - requirements.txt (from the artifact above)
+
+REM Step 8: Test the app locally
+streamlit run streamlit_app.py
+
+REM ==============================================
+REM Alternative: Install from requirements.txt
+REM ==============================================
+
+REM If you prefer to use requirements.txt:
+REM conda activate streamlit-single
+REM pip install -r requirements.txt
+
+REM ==============================================
+REM Cleanup (if needed later)
+REM ==============================================
+
+REM To remove the test environment:
+REM conda deactivate
+REM conda env remove -n streamlit-single
+
+REM ==============================================
+REM Verification Commands
+REM ==============================================
+
+REM Check environment:
+REM conda list
+
+REM Test Streamlit:
+REM streamlit --version
+
+REM Test ReportLab:
+REM python -c "from reportlab.pdfgen import canvas; print('ReportLab works!')"
